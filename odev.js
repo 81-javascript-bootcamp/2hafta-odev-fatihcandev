@@ -1,6 +1,6 @@
 /** 
 
-1. mycarDetails fonksiyonunu "GA12345 Toyota" ciktisini verecek sekilde duzenleyin.
+1. mycarDetails fonksiyonunu "GA12345 Toyota" ciktisini verecek sekilde duzenley
 
 **/
 
