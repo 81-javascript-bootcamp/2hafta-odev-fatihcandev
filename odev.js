@@ -4,16 +4,16 @@
 
 **/
 
-var car = { 
+const car = { 
     registrationNumber: "GA12345",
     brand: "Toyota",
 
-    displayDetails: function(){
+    displayDetails: function() {
         console.log(this.registrationNumber + " " + this.brand);
     }
 }
 
-var myCarDetails =  car.displayDetails;
+const myCarDetails =  car.displayDetails();
 myCarDetails();
 
 
@@ -28,7 +28,8 @@ bosluk icerebilir, ancak bosluk haridcindeki isimler en az 2 karakterden olusmal
 **/
 
 function isValidName(name) {
-  /// your code here
+  const isValid = typeof name === "string" && name.length >= 3;
+  return isValid;
 }
 
 
@@ -50,6 +51,22 @@ function summary(genre, year) {
     `${this.title} was written by ${this.author}. It is a ${genre} novel written in ${year}.`,
   )
 }
+
+summary.call(book, "dystopian", "1932");
+
+// or
+
+// summary.apply(book, ["dystopian", "1932"]);
+
+// or
+
+/*
+
+const bindedSummary = summary.bind(book, "dystopian", "1932");
+bindedSummary();
+
+*/
+
 
 
 
