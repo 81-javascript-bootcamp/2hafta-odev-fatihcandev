@@ -5,15 +5,14 @@
 **/
 
 const car = { 
-    registrationNumber: "GA12345",
-    brand: "Toyota",
-
-    displayDetails: function() {
-        console.log(this.registrationNumber + " " + this.brand);
-    }
+  registrationNumber: "GA12345",
+  brand: "Toyota",
+  displayDetails() {
+      console.log(this.registrationNumber + " " + this.brand);
+  }
 }
 
-const myCarDetails =  car.displayDetails();
+const myCarDetails =  () => car.displayDetails();
 myCarDetails();
 
 
