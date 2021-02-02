@@ -28,12 +28,16 @@ bosluk icerebilir, ancak bosluk haridcindeki isimler en az 2 karakterden olusmal
 
 function isValidName(name) {
   if (typeof name === "string") {
-    const formattedName = name.replace(/\s/g, '');
-    return formattedName.length >= 2;
+    const hasSpace = /\s/g.test(name);
+    if (hasSpace) {
+      const names = name.split(' ');
+      return names.filter(name => name !== "" || name !== " ").every(name => name.length >= 2);
+    } else {
+      return name.length >= 2;
+    }
   }
   return false;
 }
-
 /**
 
 
