@@ -1,21 +1,36 @@
 /** 
 
-1. mycarDetails fonksiyonunu "GA12345 Toyota" ciktisini verecek sekilde duzenleyin.
+1. mycarDetails fonksiyonunu "GA12345 Toyota" ciktisini verecek sekilde duzenley
 
 **/
 
-var car = { 
-    registrationNumber: "GA12345",
-    brand: "Toyota",
-
-    displayDetails: function(){
-        console.log(this.registrationNumber + " " + this.brand);
-    }
+const car = { 
+  registrationNumber: "GA12345",
+  brand: "Toyota",
+  displayDetails() {
+      console.log(this.registrationNumber + " " + this.brand);
+  }
 }
 
-var myCarDetails =  car.displayDetails;
+const myCarDetails = () => car.displayDetails();
 myCarDetails();
 
+/*
+
+OR
+
+const myCarDetails = car.displayDetails.bind(car);
+myCarDetails();
+
+OR
+
+myCarDetails.call(car);
+
+OR
+
+myCarDetails.apply(car);
+
+*/
 
 /** 
 
@@ -28,11 +43,17 @@ bosluk icerebilir, ancak bosluk haridcindeki isimler en az 2 karakterden olusmal
 **/
 
 function isValidName(name) {
-  /// your code here
+  if (typeof name === "string") {
+    const hasSpace = /\s/g.test(name);
+    if (hasSpace) {
+      const names = name.trim().split(' ');
+      return names.every(name => name.length >= 2);
+    } else {
+      return name.length >= 2;
+    }
+  }
+  return false;
 }
-
-
-
 /**
 
 
@@ -50,6 +71,22 @@ function summary(genre, year) {
     `${this.title} was written by ${this.author}. It is a ${genre} novel written in ${year}.`,
   )
 }
+
+summary.call(book, "dystopian", "1932");
+
+// or
+
+// summary.apply(book, ["dystopian", "1932"]);
+
+// or
+
+/*
+
+const bindedSummary = summary.bind(book, "dystopian", "1932");
+bindedSummary();
+
+*/
+
 
 
 
