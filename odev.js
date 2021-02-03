@@ -12,9 +12,13 @@ const car = {
   }
 }
 
-const myCarDetails =  () => car.displayDetails();
-myCarDetails();
+/*
 
+OR
+
+const myCarDetails = car.displayDetails.bind(car);
+
+*/
 
 /** 
 
@@ -28,13 +32,8 @@ bosluk icerebilir, ancak bosluk haridcindeki isimler en az 2 karakterden olusmal
 
 function isValidName(name) {
   if (typeof name === "string") {
-    const hasSpace = /\s/g.test(name);
-    if (hasSpace) {
-      const names = name.split(' ');
-      return names.filter(name => name !== "" || name !== " ").every(name => name.length >= 2);
-    } else {
-      return name.length >= 2;
-    }
+    const names = name.trim().split(' ');
+    return names.every(name => name.length >= 2);
   }
   return false;
 }
